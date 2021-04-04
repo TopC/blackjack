@@ -4,7 +4,7 @@
 @mixin pos($col, $row) {
   left: $col * 20px + 22px;
   top: $row * 18px + 5px;
-  @if($row > 3) {
+  @if ($row > 3) {
     transform: rotate(180deg);
   }
 }
@@ -18,7 +18,7 @@ html,
 body {
   background-color: #005906;
   color: rgba(236, 209, 57, 0.925);
-  background-image: url("src/45-degree-fabric-light.png");
+  background-image: url('src/45-degree-fabric-light.png');
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
 
@@ -89,7 +89,6 @@ body {
         font-size: large;
       }
     }
-
   }
 
   .card {
@@ -140,8 +139,8 @@ body {
       }
       &.bottom {
         position: absolute;
-        bottom: 5;
-        right: 3;
+        bottom: 5px;
+        right: 3px;
         transform: rotate(180deg);
       }
     }
@@ -150,9 +149,8 @@ body {
       position: absolute;
       top: 20px;
       left: 20px;
-      background-color: transparent;
       width: 100px - 20px - 20px + 3px;
-      height: 150px - 20px -20px + 11px;
+      height: 150px - 20px - 20px + 11px;
       background-color: rgb(243, 237, 210);
       border: 1px solid black;
     }
@@ -164,20 +162,20 @@ body {
 
     &.card-value-1 {
       .pip-1 {
-        @include pos(1,3);
+        @include pos(1, 3);
       }
     }
 
     &.card-value-2,
     &.card-value-3 {
       .pip-1 {
-        @include pos(1,0);
+        @include pos(1, 0);
       }
       .pip-2 {
-        @include pos(1,6);
+        @include pos(1, 6);
       }
       .pip-3 {
-        @include pos(1,3);
+        @include pos(1, 3);
       }
     }
 
@@ -187,73 +185,73 @@ body {
     &.card-value-7,
     &.card-value-8 {
       .pip-1 {
-        @include pos(0,0);
+        @include pos(0, 0);
       }
       .pip-2 {
-        @include pos(2,0);
+        @include pos(2, 0);
       }
       .pip-3 {
-        @include pos(0,6);
+        @include pos(0, 6);
       }
       .pip-4 {
-        @include pos(2,6);
+        @include pos(2, 6);
       }
       .pip-5 {
-        @include pos(0,3);
+        @include pos(0, 3);
       }
       &.card-value-5 {
         .pip-5 {
-          @include pos(1,3);
+          @include pos(1, 3);
         }
       }
       .pip-6 {
-        @include pos(2,3);
+        @include pos(2, 3);
       }
       .pip-7 {
-        @include pos(1,1.5);
+        @include pos(1, 1.5);
       }
       .pip-8 {
-        @include pos(1,4.5);
+        @include pos(1, 4.5);
       }
     }
 
     &.card-value-9,
     &.card-value-10 {
       .pip-1 {
-        @include pos(0,0);
+        @include pos(0, 0);
       }
       .pip-2 {
-        @include pos(2,0);
+        @include pos(2, 0);
       }
       .pip-3 {
-        @include pos(0,6);
+        @include pos(0, 6);
       }
       .pip-4 {
-        @include pos(2,6);
+        @include pos(2, 6);
       }
       .pip-5 {
-        @include pos(0,2);
+        @include pos(0, 2);
       }
       .pip-6 {
-        @include pos(2,2);
+        @include pos(2, 2);
       }
       .pip-7 {
-        @include pos(0,4);
+        @include pos(0, 4);
       }
       .pip-8 {
-        @include pos(2,4);
+        @include pos(2, 4);
       }
       &.card-value-9 {
         .pip-9 {
-          @include pos(1,3);
+          @include pos(1, 3);
         }
       }
       &.card-value-10 {
         .pip-9 {
-          @include pos(1,1);
+          @include pos(1, 1);
         }
         .pip-10 {
-          @include pos(1,5);
+          @include pos(1, 5);
         }
       }
     }
