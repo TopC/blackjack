@@ -1,0 +1,261 @@
+// Position pips on a 3x7 grid. All pip positions are represented
+// by integer co-ordinates between (0,0) and (2,6), appart from
+// two half rows (1, 1.5) and (1, 4.5).
+@mixin pos($col, $row) {
+  left: $col * 20px + 22px;
+  top: $row * 18px + 5px;
+  @if($row > 3) {
+    transform: rotate(180deg);
+  }
+}
+
+@mixin cardPos($qty) {
+  left: 30px + $qty * 50px;
+  top: $qty * -30px;
+}
+
+html,
+body {
+  background-color: #005906;
+  color: rgba(236, 209, 57, 0.925);
+  background-image: url("src/45-degree-fabric-light.png");
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+
+  .title {
+    color: #005906;
+    position: relative;
+    z-index: 10;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.575);
+
+    .indented {
+      margin-left: 50px;
+    }
+  }
+
+  .title-graphic {
+    position: absolute;
+    top: 20px;
+    left: 400px;
+    .card:nth-child(1) {
+      left: 0;
+      transform: rotate(-10deg);
+    }
+    .card:nth-child(2) {
+      left: 30px;
+      transform: rotate(3deg);
+    }
+  }
+
+  .hide {
+    visibility: hidden;
+  }
+
+  button {
+    font-size: 20px;
+    border: 3px solid gold;
+    border-radius: 10px;
+    background-color: #005906;
+    color: gold;
+    outline: none;
+  }
+
+  .blackjack-seat {
+    display: inline-block;
+
+    .card-position {
+      height: 170px;
+      width: 100px;
+      // background-color: #b2d4b46c;
+      position: relative;
+      left: 0;
+      top: 0;
+    }
+
+    .bust {
+      position: relative;
+      z-index: 10;
+      top: 100px;
+      left: 50px;
+      color: rgba(220, 20, 60, 0.658);
+      font-size: 60px;
+    }
+
+    .stash {
+      &.negative {
+        color: rgb(255, 102, 133);
+        font-size: large;
+      }
+    }
+
+  }
+
+  .card {
+    display: inline-block;
+    position: absolute;
+    left: 35px;
+    top: 5px;
+    width: 100px;
+    height: 150px;
+    background-color: white;
+    border-radius: 7px;
+    box-shadow: 5px 4px 45px;
+    padding: 7px 3px;
+    // font-family: 'MS Mincho', Sans;
+    font-family: 'Times New Roman', Times, serif;
+
+    &.card-1 {
+      @include cardPos(1);
+    }
+    &.card-2 {
+      @include cardPos(2);
+    }
+    &.card-3 {
+      @include cardPos(3);
+    }
+    &.card-4 {
+      @include cardPos(4);
+    }
+    &.card-5 {
+      @include cardPos(5);
+    }
+
+    &.red-suit {
+      color: red;
+    }
+
+    &.black-suit {
+      color: black;
+    }
+
+    .card-value {
+      width: 17px;
+      text-align: center;
+      line-height: 18px;
+      font-size: 18px;
+      .suit-symbol {
+        font-size: 24px;
+      }
+      &.bottom {
+        position: absolute;
+        bottom: 5;
+        right: 3;
+        transform: rotate(180deg);
+      }
+    }
+
+    .picture-card {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: transparent;
+      width: 100px - 20px - 20px + 3px;
+      height: 150px - 20px -20px + 11px;
+      background-color: rgb(243, 237, 210);
+      border: 1px solid black;
+    }
+
+    .pip {
+      position: absolute;
+      font-size: 40px;
+    }
+
+    &.card-value-1 {
+      .pip-1 {
+        @include pos(1,3);
+      }
+    }
+
+    &.card-value-2,
+    &.card-value-3 {
+      .pip-1 {
+        @include pos(1,0);
+      }
+      .pip-2 {
+        @include pos(1,6);
+      }
+      .pip-3 {
+        @include pos(1,3);
+      }
+    }
+
+    &.card-value-4,
+    &.card-value-5,
+    &.card-value-6,
+    &.card-value-7,
+    &.card-value-8 {
+      .pip-1 {
+        @include pos(0,0);
+      }
+      .pip-2 {
+        @include pos(2,0);
+      }
+      .pip-3 {
+        @include pos(0,6);
+      }
+      .pip-4 {
+        @include pos(2,6);
+      }
+      .pip-5 {
+        @include pos(0,3);
+      }
+      &.card-value-5 {
+        .pip-5 {
+          @include pos(1,3);
+        }
+      }
+      .pip-6 {
+        @include pos(2,3);
+      }
+      .pip-7 {
+        @include pos(1,1.5);
+      }
+      .pip-8 {
+        @include pos(1,4.5);
+      }
+    }
+
+    &.card-value-9,
+    &.card-value-10 {
+      .pip-1 {
+        @include pos(0,0);
+      }
+      .pip-2 {
+        @include pos(2,0);
+      }
+      .pip-3 {
+        @include pos(0,6);
+      }
+      .pip-4 {
+        @include pos(2,6);
+      }
+      .pip-5 {
+        @include pos(0,2);
+      }
+      .pip-6 {
+        @include pos(2,2);
+      }
+      .pip-7 {
+        @include pos(0,4);
+      }
+      .pip-8 {
+        @include pos(2,4);
+      }
+      &.card-value-9 {
+        .pip-9 {
+          @include pos(1,3);
+        }
+      }
+      &.card-value-10 {
+        .pip-9 {
+          @include pos(1,1);
+        }
+        .pip-10 {
+          @include pos(1,5);
+        }
+      }
+    }
+  }
+}
